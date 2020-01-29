@@ -12,7 +12,7 @@
       //console.log(`${i} is divisible by 3`);
       counter++;
     }
-    elseif (i % 5 === 0 && i % 3 !== 0){
+    if (i % 5 === 0 && i % 3 !== 0){
       //console.log(`${i} is divisible by 5`);
       counter++;
     }
