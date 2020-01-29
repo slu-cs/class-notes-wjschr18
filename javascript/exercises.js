@@ -14,5 +14,6 @@
       flag = false;
     }else{
       y++;
+      console.log(y);
     }
   }
