@@ -9,7 +9,7 @@
   let flag = true;
   while (flag){
     let y = 1;
-    if (y % 2===3 && y % 3 === 0 && y % 5 === 0 && y % 7 === 0){
+    if (y % 2=== 0 && y % 3 === 0 && y % 5 === 0 && y % 7 === 0){
       console.log(`4: ${y}`);
       flag = false;
     }else{
