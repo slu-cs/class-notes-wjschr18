@@ -10,9 +10,9 @@
   ];
 
   let max = 0;
-  for (const class of courses){
-    if (class.number > max){
-      max = class.number;
+  for (let i = 0; i < courses.length; i++){
+    if (courses[i].number > max){
+      max = courses[i].number;
     }
   };
   console.log(`Largest course number is: ${max}`); // 332
