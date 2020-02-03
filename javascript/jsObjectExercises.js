@@ -52,4 +52,5 @@
     return rangedArray;
   };
 
-  console.log(rangedArray(3));
+  console.log(Range(3));
+  console.log(Range(4, 16));
