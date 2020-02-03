@@ -40,7 +40,7 @@
   // 3. Define a function that works like the range function in Python
   const Range = function(a,b){
     const rangedArray = [];
-    if (b === Undefined){
+    if (b === undefined){
       for (let i = 0; i < a; i++){
         rangedArray.push(i);
       }
