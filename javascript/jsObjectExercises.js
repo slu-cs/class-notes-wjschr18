@@ -36,3 +36,20 @@
   const magazine = new Book('TestTitle', 'TestAuthor');
   console.log(magazine);
   console.log(magazine.checkAuthor('TestAuthor'));
+
+  // 3. Define a function that works like the range function in Python
+  const Range = function(a,b){
+    let rangedArray = [];
+    if (b === Undefined){
+      for (let i = 0; i < a; i++){
+        rangedArray.push(i);
+      }
+    } else {
+      for (let i = a; i < b; i++){
+        rangedArray.push(i);
+      }
+    }
+    return rangedArray;
+  };
+
+  console.log(rangedArray(3,8));
