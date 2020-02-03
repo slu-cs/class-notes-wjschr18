@@ -25,7 +25,7 @@
     height: 20,
     area: function(){
       return this.width*this.height;
-    };
+    }
   };
 
   // Method call
