@@ -40,6 +40,6 @@
   languages.push('MongoDB'); // adds to end of array
 
   //iterating over elements
-  for (const leng of languages){
+  for (const lang of languages){
     console.log(lang);
   }
