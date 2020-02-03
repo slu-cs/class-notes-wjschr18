@@ -2,10 +2,10 @@
 //Each course should have a subject (e.g. 'CS') and a number (e.g. 332).
 //Iterate through this array to find the largest course number in your schedule.
   const courses = [
-    {subject: 'CS', number: 332}
-    {subject: 'CS', number: 220}
-    {subject: 'MATH', number: 280}
-    {subject: 'MUS', number: 210}
+    {subject: 'CS', number: 332},
+    {subject: 'CS', number: 220},
+    {subject: 'MATH', number: 280},
+    {subject: 'MUS', number: 210},
     {subject: 'PHYS', number: 105}
   ];
 
@@ -15,7 +15,7 @@
       max = class.number;
     }
   };
-  console.log(`Largest course number is: ${max}`);
+  console.log(`Largest course number is: ${max}`); // 332
 
   //2. Define a constructor function for Book objects.
   //Each book should have a title and an array of authors. Define a shared method for books that
