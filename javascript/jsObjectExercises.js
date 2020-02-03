@@ -52,4 +52,4 @@
     return rangedArray;
   };
 
-  console.log(rangedArray(3,8));
+  console.log(rangedArray(3));
