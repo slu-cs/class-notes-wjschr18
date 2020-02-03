@@ -35,4 +35,4 @@
 
   const magazine = new Book('TestTitle', 'TestAuthor');
   console.log(magazine);
-  console.log(magazine.checkAuthor('TestAuthorss'));
+  console.log(magazine.checkAuthor('TestAuthor'));
