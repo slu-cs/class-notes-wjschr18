@@ -1,0 +1,49 @@
+  <!-- Examples of editing the DOM -->
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>JQuery Objects</title>
+    </head>
+    <body>
+      <form>
+        <input type="text" name="left">
+        <input type="text" name="right">
+        <button type="submit">Submit</button>
+      </form>
+      <div class="first">
+        <img id="A" src="http://via.placeholder.com/100x100">
+        <img id="B" src="http://via.placeholder.com/100x100">
+      </div>
+      <div class="second">
+        <button id="C">Click me</button>
+        <button id="D">Click me</button>
+      </div>
+      <ul id="clicks"></ul>
+      <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+      <script>
+
+        $('form').on('submit', function(event){
+          const form = $(this); // this = element that generated the event
+          event.preventDefault(); // prevents from autosubmitting the form (intercepting the form from search bar web address)
+          $(this).find('input').remove();
+        });
+
+        // click listener for clicking on imgs
+        $(document).on('click', 'img', function(event){
+          $(this).closest('div').remove(); // removes nearest ancestor
+        });
+
+        $('.second').on('click', 'button', function(event){
+          const button = $(this);
+          const id = button.attr('id');
+          const li = $(`<li>Clicked button ${id}</li>`)
+          $('#clicks').append(li);
+        });
+
+      </script>
+    </body>
+  </html>
