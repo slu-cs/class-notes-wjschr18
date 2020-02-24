@@ -1,0 +1,49 @@
+<!-- Example with a loop over a jquery object-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <form>
+      <input type="text" name = "left">
+      <input type="text" name = "right">
+      <button type="submit">Submit</button>
+    </form>
+    <div id="history"></div>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+    <script>
+
+      let counter = 0; // number of submits on the form
+
+      //event handler
+      $('form').on('submit', function(event){
+        const form = $(this);
+        event.preventDefault(); // don't really submit the form
+
+        // Create a new list
+        const list = $('<ul></ul>');
+        const inputs = form.find('input');
+
+        // transfer each input value into a list item
+        for (let input of inputs){
+          input = $(input); // turn into JQuery object
+          const li = $(`<li>${input.val()}</li>`)
+          list.append(li); // add list item to list
+          input.val(''); //empties input fields upon submission
+        }
+        counter++;
+        // add to the page
+        $('#history').append($(`<p>Submit #${counter}</p>`))
+        $('#history').append(list);
+      });
+
+
+    </script>
+  </body>
+</html>
