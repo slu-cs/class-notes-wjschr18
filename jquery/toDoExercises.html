@@ -1,0 +1,47 @@
+<!-- practice with JQuery, create a webpage that serves as an interactive to-do list. -->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <form>
+      <input type="text" name="add" id="add">
+      <button type="submit" name="addButton">Add item</button>
+    </form>
+    <div id="checklist">
+
+      <!-- <input type="checkbox" id="check1" name="check1" value="C">
+      <label for="check1">Test</label> -->
+    </div> <!-- checklist -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+    <script>
+      let counter = 0;
+
+      $('form').on('submit', function(event){
+        const form = $(this);
+        event.preventDefault();
+
+        const check = $(`<input type="checkbox" name="check${counter}" value="c">`);
+        const list = $('<fieldset></fieldset>');
+        const inputs = form.find('#add');
+
+        // transfer each input value into a list item
+        for (let input of inputs){
+          input = $(input); // turn into JQuery object
+          const label = $(`<label for="check${counter}">${input.val()}</label>"`)
+          list.append(label); 
+          list.append(check);
+          input.val(''); //empties input fields upon submission
+        }
+        counter++;
+        $('#checklist').append(list);
+      });
+    </script>
+  </body>
+</html>
