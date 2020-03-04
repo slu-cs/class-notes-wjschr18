@@ -6,7 +6,7 @@
 
   // Respond to one request
   app.get('/', function(request, response){
-    respond.send('Hello Will');
+    response.send('Hello Will');
   });
 
   // Start the server
