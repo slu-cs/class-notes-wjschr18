@@ -7,7 +7,7 @@ const router = express.Router();
 // Prtend database collection
 const cakes = [
   {id: 'vanilla', flavor: 'Vanilla'},
-  {id: 'chocolate', flavor: 'Chocolate'}
+  {id: 'chocolate', flavor: 'Chocolate'},
   {id: 'blueberry', flavor: 'Blueberry'}
 ];
 
