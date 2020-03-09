@@ -4,6 +4,12 @@ const express = require('express');
 // create Router
 const router = express.Router();
 
+// Prtend database collection
+const cakes = [
+  {id: 'vanilla', flavor: 'Vanilla'},
+  {id: 'chocolate', flavor: 'Chocolate'}
+];
+
 // cs-linuxlab-15.stlawu.edu:3000/cakes/
 router.get('/', function(request, response){
   response.send(`
@@ -16,12 +22,14 @@ router.get('/', function(request, response){
 
 //cs-linuxlab-15.stlawu.edu:3000/cakes/id
 router.get('/:id', function(request, response, next){
-  if(request.params.id === 'vanilla'){
-    response.send('Vanilla cakes');
-  } else if (request.params.id === 'chocolate'){
-    response.send('Chocolate cakes');
+
+  // Pretend database lookup
+  const cake = cakes.find(cake => cake.id === request.params.id);
+
+  if (!cake){ // if cake === undefined
+    next();
   } else {
-    next(); // pass on this request
+    response.render('cakes/detail', {cake: cake});
   }
 });
 
