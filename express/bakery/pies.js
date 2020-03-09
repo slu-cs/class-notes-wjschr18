@@ -4,24 +4,26 @@ const express = require('express');
 // create Router
 const router = express.Router();
 
+// Prtend database collection
+const pies = [
+  {id: 'cherry', flavor: 'Cherry'},
+  {id: 'apple', flavor: 'Apple'},
+  {id: 'blueberry', flavor: 'Blueberry'}
+];
+
 // cs-linuxlab-15.stlawu.edu:3000/pies/
 router.get('/', function(request, response){
-  response.send(`
-    <h1>Pies</h1>
-    <ul>
-      <li><a href="/pies/apple">Apple</a></li>
-      <li><a href="/pies/cherry">Cherry</a></li>
-    `);
+  response.render('pies/index');
 });
 
 //cs-linuxlab-15.stlawu.edu:3000/pies/id
 router.get('/:id', function(request, response, next){
-  if(request.params.id === 'apple'){
-    response.send('Apple pies');
-  } else if (request.params.id === 'cherry'){
-    response.send('Cherry pies');
+  const pie = pies.find(pie => pies === request.params.id);
+
+  if (!cake){
+    next();
   } else {
-    next(); // pass on this request
+    response.render('pies/detail', {pie: pie})
   }
 });
 
