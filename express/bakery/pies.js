@@ -20,10 +20,10 @@ router.get('/', function(request, response){
 router.get('/:id', function(request, response, next){
   const pie = pies.find(pie => pies === request.params.id);
 
-  if (!cake){
+  if (!pie){
     next();
   } else {
-    response.render('pies/detail', {pie: pie})
+    response.render('pies/detail', {pie: pie});
   }
 });
 
