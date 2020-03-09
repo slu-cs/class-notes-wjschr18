@@ -8,6 +8,7 @@ const router = express.Router();
 const cakes = [
   {id: 'vanilla', flavor: 'Vanilla'},
   {id: 'chocolate', flavor: 'Chocolate'}
+  {id: 'blueberry', flavor: 'Blueberry'}
 ];
 
 // cs-linuxlab-15.stlawu.edu:3000/cakes/
