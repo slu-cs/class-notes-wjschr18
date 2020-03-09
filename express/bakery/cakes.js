@@ -12,12 +12,7 @@ const cakes = [
 
 // cs-linuxlab-15.stlawu.edu:3000/cakes/
 router.get('/', function(request, response){
-  response.send(`
-    <h1>Cakes</h1>
-    <ul>
-      <li><a href="/cakes/chocolate">Chocolate</a></li>
-      <li><a href="/cakes/vanilla">Vanilla</a></li>
-    `);
+  response.render('cakes/index', {cakes: cakes});
 });
 
 //cs-linuxlab-15.stlawu.edu:3000/cakes/id
