@@ -26,18 +26,27 @@ router.get('/:id', function(request, response, next){
   }
 });
 
-// POST /flowers
-
-router.post('/', function(request, response){
-  const flower = request.body;
-  if (!flowers.id){
-    response.status(400).send('Missing ID');
+// GET /flowers
+router.get('/', function(request, response) {
+  if (request.query.color) {
+    response.send(flowers.filter(f => f.color === request.query.color));
+  } else if (request.query.season) {
+    response.send(flowers.filter(f => f.season === request.query.season));
+  } else {
+    response.send(flowers);
   }
-  if (flowers.find(f => f.id === flower.id)){
-    response.status(400).send('Duplicate'); // Bad request; can't create something that already exists
-  } else{
+});
+
+// POST /flowers
+router.post('/', function(request, response) {
+  const flower = request.body;
+  if (!flower.id) {
+    response.status(400).send('Missing ID');
+  } else if (flowers.find(f => f.id === flower.id)) {
+    response.status(400).send('Duplicate ID');
+  } else {
     flowers.push(flower);
-    response.status(201).send(flowers); // .end() stops the sending of information
+    response.status(201).send(flowers);
   }
 });
 
