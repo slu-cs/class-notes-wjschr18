@@ -1,30 +1,14 @@
-// router for a collection of flowers
+// Router for a flower collection
 const express = require('express');
 
-//create router
+// Create the router
 const router = express.Router();
 
-// pretend database
+// Pretend database
 let flowers = [
   {id: 'tulip', color: 'pink', season: 'spring'},
   {id: 'rose', color: 'red', season: 'summer'}
 ];
-
-// GET /flowers
-router.get('/', function(request, response){
-  response.send(flowers);
-});
-
-// GET /flowers/id
-
-router.get('/:id', function(request, response, next){
-  const flower = flowers.find(f => f.id === request.params.id) //lookup flower
-  if (!flower){ // cannot find flower
-    next(); // should lead to 404 in the end
-  } else {
-    response.send(flower);
-  }
-});
 
 // GET /flowers
 router.get('/', function(request, response) {
@@ -34,6 +18,16 @@ router.get('/', function(request, response) {
     response.send(flowers.filter(f => f.season === request.query.season));
   } else {
     response.send(flowers);
+  }
+});
+
+// GET /flowers/id
+router.get('/:id', function(request, response, next) {
+  const flower = flowers.find(f => f.id === request.params.id);
+  if (!flower) {
+    next(); // Leads to 404
+  } else {
+    response.send(flower);
   }
 });
 
@@ -51,11 +45,10 @@ router.post('/', function(request, response) {
 });
 
 // DELETE /flowers/id
-
-router.delete('/:id', function(request, repsponse, next){
-  const flower = flowers.find(f => f.id === request.params.id)
-  if (!flower){
-    next();
+router.delete('/:id', function(request, response, next) {
+  const flower = flowers.find(f => f.id === request.params.id);
+  if (!flower) {
+    next(); // Leads to 404
   } else {
     flowers = flowers.filter(f => f.id !== flower.id);
     response.status(200).send(flowers);
@@ -63,21 +56,15 @@ router.delete('/:id', function(request, repsponse, next){
 });
 
 // PUT /flowers/id
-
-router.put('/:id', function(request, response, next){
-  const flower = flowers.find(f => f.id === request.params.id)
-  if (!flower){
-    next();
+router.put('/:id', function(request, response, next) {
+  const flower = flowers.find(f => f.id === request.params.id);
+  if (!flower) {
+    next(); // Leads to 404
   } else {
-    if (request.body.color){
-      flower.color = request.body.color;
-    }
-    if (request.body.season){
-      flower.season = request.body.season;
-    }
+    if (request.body.color) flower.color = request.body.color;
+    if (request.body.season) flower.season = request.body.season;
     response.status(200).send(flowers);
   }
 });
-
 
 module.exports = router;
