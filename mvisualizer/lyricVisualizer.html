@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Lyric Visualization</title>
+  </head>
+  <body>
+    <div class="container rounded pt-3">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-primary" type="button" id="searchButton">Search</button>
+        </div>
+        <input type="text" id="queryText"class="form-control" placeholder="Song Title">
+      </div>
+      <div id="results">
+
+      </div>
+      <div class="rounded" id="songResults">
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous">
+  </script>
+  <script>
+    $('#searchButton').on('click', function(event){
+      event.preventDefault();
+      let songTitle = $('#queryText').val();
+      let query = songTitle.replace(/ /g, '+');
+      let songlist;
+      //console.log(query);
+      $('#results').load(`http://search.azlyrics.com/search.php?q=${query} .panel`)
+      const elements = $('td.visitedlyr').children('a');
+      //console.log(elements);
+      for (let i = 0; i < elements.length; i++){
+        let song = elements[i];
+        console.log(song);
+        //console.log(elements[i]);
+        // if (song.attr('href') == "https://www.azlyrics.com/lyrics/"){
+        //   console.log(elements[i]);
+          //songlist[counter] = elements[i];
+        }
+      // for (let i = 0; i < $('td.visitedlyr').find('a').length; i++){
+      //     console.log($('td.visitedlyr').children('a'));
+      // }
+    });
+  </script>
+</html>
