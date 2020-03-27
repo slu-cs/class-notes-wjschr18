@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Florist</title>
+  </head>
+  <body>
+  <h1>Request</h1>
+    <form>
+      <input type="text" id="method" placeholder="method">
+      <input type="text" id="path" placeholder="path">
+      <input type="text" id="body" placeholder="body">
+      <button>Send</button>
+    </form>
+    <h1>Response</h1>
+    <textarea rows="5" cols="85"></textarea>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+    <script>
+
+      // Intercept form submits
+      $('form').on('submit', function(event){
+        event.preventDefault();
+
+        // Construct a request object
+        const request  = {
+          method: $('#method').val(), // /get
+          url: $('#path').val(), // /flowers
+          data: $('#body').val()
+        };
+
+          // Send the request and display response on the page
+          $.ajax(request)
+            .done(response => $('textarea').val(JSON.stringify(response))) // JSON.stringify turns objects into strings
+            .fail(error => $('textarea').val(JSON.stringify(error)));
+      });
+
+
+    </script>
+  </body>
+</html>
